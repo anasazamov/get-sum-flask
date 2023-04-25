@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request,jsonify
 
 app = Flask(__name__)
 
@@ -20,8 +20,11 @@ def get_sum():
                 "sum": 3
             }
     """
-    pass
+    dict=request.args
+
+    return jsonify( {"sum":int(dict.get("a",0))+int(dict.get("b",0))})
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
+    
